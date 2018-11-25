@@ -8,5 +8,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/acervo', 'AcervoController@index');
-Route::get('/adicionar/livro', 'AcervoController@adicionar');
+Route::get('/book', 'BookController@index');
+Route::get('/book/adicionar', 'BookController@adicionar');
+Route::post('/book/salvar', 'BookController@salvar');
+Route::get('/book/{book}/editar', 'BookController@editar');
+

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Acervo</div>
+                <div class="card-header">Laravel 5.7</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                  exibir acervo
+                  Welcome!
                 </div>
             </div>
         </div>
