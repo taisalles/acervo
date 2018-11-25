@@ -6,7 +6,9 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header"> Acervo 
+                    @if (Auth::user()->admin == true)
                   <a class="card-link float-right" href="{{ url ('/book/adicionar') }}"> Adicionar Livro </a> 
+                   @endif
                 </div>
 
                 <div class="card-body">
@@ -24,7 +26,7 @@
                         <th> País             </th>
                         <th> ISBN             </th>
                         <th> Páginas </th>
-                        <th> Alteração     </th>
+                        <th> Informações     </th>
 
                         <tbody>
                             @foreach ($book as $book)
@@ -36,10 +38,17 @@
                                 <td> {{ $book->isbn }} </td>
                                 <td> {{ $book->pages }} </td>
                                 <td>
-                                    <a href="book/{{$book->id}}/editar" class="btn btn-default btn-sn"> Editar </a>
-                                    {!! Form::open(['method' => 'DELETE', 'url' => '/book/'.$book -> id, 'style' => 'display:inline;']) !!}
+                                    @if (Auth::user()->admin == true)
+                                    
+                                    <a href="book/{{$book->id}}/editar" class="btn btn-default btn-sn"> Editar </a> </td>
+                                   <td> {!! Form::open(['method' => 'DELETE', 'url' => '/book/'.$book -> id, 'style' => 'display:inline;']) !!}
                                     <button type="submit" class="btn btn-default btn-sn"> Excluir </button>
-                                    {!! Form::close() !!}
+                                    {!! Form::close() !!} </td>
+                                    
+                                    @else
+                                     <input type="radio" name="{{ $book->id }}"> Já li esse </td>
+                                     <td> <input type="radio" name="{{ $book->id }}"> Desejo 
+                                     @endif
                                 </td>
                             </tr>
                             @endforeach       
