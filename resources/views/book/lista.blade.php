@@ -10,6 +10,12 @@
                 </div>
 
                 <div class="card-body">
+
+                 @if (Session::has('msg_success'))
+                        <div class="alert alert-success" role="alert">
+                            {{ Session::get('msg_success') }}
+                        </div>
+                    @endif
                
                     <table class="table">
                         <th> Título           </th>
@@ -17,8 +23,8 @@
                         <th> Edição           </th>
                         <th> País             </th>
                         <th> ISBN             </th>
-                        <th> Total de Páginas </th>
-                        <th>  Gerenciar Dados     </th>
+                        <th> Páginas </th>
+                        <th> Alteração     </th>
 
                         <tbody>
                             @foreach ($book as $book)
@@ -30,9 +36,10 @@
                                 <td> {{ $book->isbn }} </td>
                                 <td> {{ $book->pages }} </td>
                                 <td>
-                                <a class="btn btn-default" href="book/{{$book->id}}/editar"> Editar </a>
-                              
-
+                                    <a href="book/{{$book->id}}/editar" class="btn btn-default btn-sn"> Editar </a>
+                                    {!! Form::open(['method' => 'DELETE', 'url' => '/book/'.$book -> id, 'style' => 'display:inline;']) !!}
+                                    <button type="submit" class="btn btn-default btn-sn"> Excluir </button>
+                                    {!! Form::close() !!}
                                 </td>
                             </tr>
                             @endforeach       

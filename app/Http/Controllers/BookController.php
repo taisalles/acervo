@@ -45,4 +45,12 @@ class BookController extends Controller
         \Session::flash('msg_success', 'Livro atualizado com sucesso');
         return Redirect::to('book/'.$book->id.'/editar');
     }
+
+    public function excluir($id)
+    { 
+        $book = Book::FindOrFail($id);
+        $book->delete();
+        \Session::flash('msg_success', 'deletado com sucesso');
+        return Redirect::to('book');
+    }
 }
