@@ -9,8 +9,13 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Redirect;
 
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+
+
 class BookController extends Controller
 {
+
     public function index()
     {
         $book = Book::get();
