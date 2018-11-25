@@ -36,4 +36,13 @@ class BookController extends Controller
         $book = Book::FindOrFail($id);
         return view('book.form', ['book' => $book]);
     }
+
+    public function atualizar($id, Request $request)
+    {
+        $book = Book::FindOrFail($id);
+        $book->update($request->all());
+
+        \Session::flash('msg_success', 'Livro atualizado com sucesso');
+        return Redirect::to('book/'.$book->id.'/editar');
+    }
 }
