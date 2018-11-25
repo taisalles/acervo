@@ -25,8 +25,8 @@
                         <th> Edição           </th>
                         <th> País             </th>
                         <th> ISBN             </th>
-                        <th> Páginas </th>
-                        <th> Informações     </th>
+                        <th> Páginas          </th>
+                        <th> Informações      </th>
 
                         <tbody>
                             @foreach ($book as $book)
