@@ -20,11 +20,15 @@ class Book extends Model
     ];
 
     public function users(): BelongsToMany{
-        return $this->belongsToMany(User::class,'users_books','book_id','user_id')->withPivot(['see','want']);
+        return $this->belongsToMany('App\User','users_books');
+    }
+    
+    public function desejos(): BelongsToMany{
+        return $this->belongsToMany('App\User','desired');
     }
     
     public function authors(): BelongsToMany{
-        return $this->belongsToMany(Author::class);
+        return $this->belongsToMany('App\Models\Author','books_authors');
     }
     
 }

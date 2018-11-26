@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Book;
-use App\Models\Author;
 
-
-class BookController extends Controller
+class AuthorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +13,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::get();       
-        return view('book.index', compact('books'));
+        //
     }
 
     /**
@@ -27,8 +23,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        $authors = Author::get();
-        return view('book.create', compact('authors'));
+        //
     }
 
     /**
@@ -37,14 +32,11 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Book $book)
+    public function store(Request $request)
     {
-        $book->create($request->all());
-        return redirect('books')->with('Sucesso', 'Livro inserido');
-
+        //
     }
 
-  
     /**
      * Display the specified resource.
      *
@@ -87,10 +79,6 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        $book = Book::findOrFail($id);
-        $book->delete();
-
-        return redirect('home')->with('Sucesso', 'Livro deletado');
-
+        //
     }
 }

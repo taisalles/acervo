@@ -5,9 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Acervo
-                    <a class="card-link float-right" href="{{ url ('/book') }}"> voltar</a>
-                
+                <div class="card-header">
+                    Cadastro de Livros
                 </div>
 
                 <div class="card-body">
@@ -17,13 +16,30 @@
                         </div>
                     @endif
 
-                    @if(Request::is('*/editar'))
+                    <!--
+
+                    <h1>Inserir nova categoria:</h1>
+                    <form method="POST" action="{{ route('books.store') }}">
+                    @csfr
+                    <input type="text" name="title" placeholder="Título do Livro" autofocus>
+                    <input type="text" name="title" placeholder="Título do Livro" autofocus>
+                    <input type="text" name="title" placeholder="Título do Livro" autofocus>
+                    <input type="text" name="title" placeholder="Título do Livro" autofocus>
+                    <input type="text" name="title" placeholder="Título do Livro" autofocus>
+                    <input type="text" name="title" placeholder="Título do Livro" autofocus>
+ 
+                    <button type="submit">Enviar</button>
+                    </form>
+                        -->
+
+                  <!--  @if(Request::is('*/editar'))
                     
                          {!! Form::model($book, ['method' => 'PATCH', 'url' => 'book/'.$book->id]) !!} 
                     @else
+                    -->
                     
                          {!!Form::open(['url' => 'book/salvar']) !!} 
-                    @endif
+                 
 
                          {!! Form::label( 'name','Título:') !!}  
                          {!! Form::input( 'text','title', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'título']) !!}  
