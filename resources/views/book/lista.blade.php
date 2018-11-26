@@ -45,14 +45,38 @@
                                     <button type="submit" class="btn btn-default btn-sn"> Excluir </button>
                                     {!! Form::close() !!} </td>
                                     
+                                   
                                     @else
-                                     <input type="radio" name="{{ $book->id }}"> Já li esse </td>
-                                     <td> <input type="radio" name="{{ $book->id }}"> Desejo 
+                                    {!!Form::open(['url' => 'userbook/add']) !!} 
+
+                
+                                    <div class="form-group">
+                                    <input type="checkbox" class="" name="see" value="false"> 
+                                    <label for=""> Li </label>
+
+                                    <input type="checkbox" class="" name="want" value="false"> 
+                                    <label for=""> Quero </label>
+                                    </div>
+
+                                    
+                                  
+                                   
+                            <!--
+                                     <input type="radio" name="{{ $book->id }}.radio" value="li"> Já li esse -->
+                                      </td>
+
+                                     <td> 
+                                    
+                                     {!! Form::submit('ok', ['class' => 'btn btn-primary']) !!}
+                                   <!--  <input type="radio" name="{{ $book->id }}.radio" value="quero"> Desejo -->
+                               
+                                   {!! Form::close() !!} 
                                      @endif
                                 </td>
                             </tr>
                             @endforeach       
                           </tbody>
+                          </table>
                     </div>
                  </div>
         </div>

@@ -5,7 +5,9 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
+use App\Models\Book;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -27,4 +29,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function books(): BelongsToMany{
+        return $this->belongsToMany(Book::class,'users_books','user_id','book_id')->withPivot(['see','want']);
+    }
+    
 }

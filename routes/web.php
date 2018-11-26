@@ -20,3 +20,5 @@ Route::group(['middleware' => ['auth', 'auth.admin']], function(){
     Route::delete('book/{book}', 'BookController@excluir');
    
 });
+
+Route::post('userbook/add', 'UserBookController@add');
