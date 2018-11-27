@@ -51,7 +51,7 @@ class BookController extends Controller
 
         $book->save();
 
-        $authors = $request->get ('authors[]');
+        $authors = $request->get('authors');
 
         foreach ( $authors as $author ) {
             $book->authors()->attach($author);
@@ -83,7 +83,7 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
