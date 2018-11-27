@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    Cadastro de Livros
+                    Editar de Livro
                 </div>
 
                 <div class="card-body">
@@ -16,7 +16,7 @@
                         </div>
                     @endif
 
-                    <form method="post" action="{{ route('books.store') }}">
+                    <form method="post" action="{{ action('BookController@update', $id)}}">
                             {{ csrf_field() }}
 
                     <div class="row">
@@ -59,7 +59,7 @@
                     </div>
 
                     <div class="row">
-                    <button type="submit" class="btn btn-default btn-sn"> Cadastrar </button>
+                    <button type="submit" class="btn btn-default btn-sn"> Editar </button>
                     </div>
                     </form>
                         

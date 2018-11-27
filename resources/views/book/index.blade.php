@@ -25,7 +25,7 @@
                         <th> País             </th>
                         <th> ISBN             </th>
                         <th> Páginas          </th>
-                        <th> Informações      </th>
+                        <th> Autor(es)      </th>
 
                         <tbody>
                              @forelse ( $books as $book )

@@ -18,7 +18,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::get();       
+        $books = Book::all();       
         return view('book.index', compact('books'));
     }
 
@@ -29,7 +29,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        $authors = Author::get();
+        $authors = Author::all();
         return view('book.create', compact('authors'));
     }
 
@@ -83,7 +83,9 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        
+        $book = \App\Models\Book::findOrFail($id);
+        $authors= Author::all();
+        return view('book.edit', compact('book','authors','id'));
     }
 
     /**
@@ -95,7 +97,25 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $book = \App\Models\Book::findOrFail($id);
+        $book->title = $request->get('title');
+        $book->publisher = $request->get('publisher');
+        $book->ed = $request->get('ed');
+        $book->country = $request->get('country');
+        $book->isbn = $request->get('isbn');
+        $book->pages = $request->get('pages');
+
+        $book->save();
+
+        $authors = $request->get('authors');
+
+        foreach ( $authors as $author ) {
+            $book->authors()->attach($author);
+        }
+        
+        $book->save();
+
+        return redirect('books')->with('Sucesso', 'Dados atualizados');
     }
 
     /**
