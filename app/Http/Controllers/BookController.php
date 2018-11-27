@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Author;
 
+use App\User;
+
 
 class BookController extends Controller
 {
@@ -37,9 +39,26 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Book $book)
+    public function store(Request $request)
     {
-        $book->create($request->all());
+        $book = new \App\Models\Book;
+        $book->title = $request->get('title');
+        $book->publisher = $request->get('publisher');
+        $book->ed = $request->get('ed');
+        $book->country = $request->get('country');
+        $book->isbn = $request->get('isbn');
+        $book->pages = $request->get('pages');
+
+        $book->save();
+
+        $authors = $request->get ('authors[]');
+
+        foreach ( $authors as $author ) {
+            $book->authors()->attach($author);
+        }
+        
+        $book->save();
+
         return redirect('books')->with('Sucesso', 'Livro inserido');
 
     }

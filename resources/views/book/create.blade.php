@@ -51,10 +51,9 @@
 
                     <div class="row">
                     <label for="author"> Nome do Autor: </label>
-                    
                         <select name="authors[]" multiple>
                         @foreach ($authors as $author)
-                        <option value="{{ $author['id'] }}"> {{ $author['name'] }}</option>
+                        <option value="{{ $author['id'] }}"> {{ $author['name'] }} </option>
                         @endforeach
                     </select> 
                     </div>
