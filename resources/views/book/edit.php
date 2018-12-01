@@ -16,6 +16,8 @@
                         </div>
                     @endif
 
+                    View edit.php
+<!--
                     <form method="post" action="{{ action('BookController@update', $id)}}">
                             {{ csrf_field() }}
 
@@ -64,7 +66,7 @@
                     </form>
                         
 
-                 
+                 -->
                         
                 </div>
             </div>
